@@ -1,0 +1,41 @@
+<style type = "text/css">
+
+body {
+    font-family: serif;
+    font-size: 1.1em;
+    margin-top: 5%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+}
+
+h1, h2 {
+    margin-top: 2em;
+}
+
+
+a:link {
+    color: hotpink;
+}
+
+
+a:visited {
+    color: hotpink;
+}
+
+
+a:hover {
+    color: red;
+}
+
+
+a:active {
+    color: red;
+}
+
+.right {
+    float: right;
+    padding: 2em;
+}
+
+</style>
