@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type = "text/css">
+  
+  body {
+      font-family: serif;
+      font-size: 1.1em;
+      margin-top: 5%;
+      margin-right: 10%;
+      margin-bottom: 5%;
+      margin-left: 10%;
+  }
+  
+  h1, h2 {
+      margin-top: 2em;
+  }
+  
+  
+  a:link {
+      color: hotpink;
+  }
+  
+  
+  a:visited {
+      color: hotpink;
+  }
+  
+  
+  a:hover {
+      color: red;
+  }
+  
+  
+  a:active {
+      color: red;
+  }
+  
+  .right {
+      float: right;
+      padding: 2em;
+  }
+  
+  </style>
+</head>
+<body>
+<h1 id="week-1">Week 1</h1>
+<h2 id="reading">Reading</h2>
+<ul>
+<li><p>The Split-Apply-Combine Strategy for data analysis, by guru Hadley Wickham -- a paper that introduces the ideas behind plyr -- <a href="http://vita.had.co.nz/papers/plyr.pdf" class="uri">http://vita.had.co.nz/papers/plyr.pdf</a></p></li>
+<li><p>R for data science, particularly chapters 12 about tidy data and 21 about iteration, also by Hadley Wickham and Garrett Grolemund -- will teach you modern advanced R packages right away, and make you look like a genius -- <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a>.</p></li>
+</ul>
+<h2 id="exercises">Exercises</h2>
+<ul>
+<li><p>Look back at the <code>mens_long_jump_records.txt</code> from last week. There is also a file called <code>mens_long_jump_year_best.txt</code>, which contains the season best in men's long jump from 1960 to 2015. Read both files into R, and make a graph that shows both time series together. This can be achieved in multiple ways. One way is to 1) add an indicator column that tells whether the observation is a record or a season best; 2) combined both data sets to one long dataframe with the <code>rbind</code> function; and 3) use the indicator column to colour the points differently. Another is to add, with the <code>+</code> operator, the second dataset as another layer (<code>geom_point</code>) to the plot.</p></li>
+<li><p>Another way to combine two data frames is to merge them, i.e. join them based on some column that identifies the rows. Read <code>womens_long_jump_year_best.txt</code>. Now <code>merge</code> that table with the one containing men's season best by year. It is perhaps useful to change the <code>colnames</code> of the table, either before or after the merging. What happens to 1986? (Hint: It is missing from the male file.) Make a scatterplot of male and female results, and calculate the correlation (with <code>cor</code> or <code>cor.test</code>), and the regression (with <code>lm</code>).</p></li>
+<li><p>It is often useful to go back and forth between &quot;long form&quot; and &quot;short form&quot; data frames. To demonstrate the difference: the combined table of long jump results is in short form (each year is one row, and the two season best are stored in columns). In long form, each value (season best) would have its own row. Use the <code>melt</code> function (from the <code>reshape2</code> package) to create this data frame. Use <code>nrows</code> on the result, and the original data frame. Does the long form data frame have the expected number of rows?</p></li>
+<li><p>Look back at the problem of generating sine and cosine waves. First, rewrite your code it returns a <code>data.frame</code> with three columns containing x, sin(x), and cos(x). Then, encapsulate this code in a function of x. Show its output for different input vectors.</p></li>
+</ul>
+<h2 id="homework">Homework</h2>
+<p>The second homework combines the unicorn dataset with some additional (just as fictional) molecular data.</p>
+<p>Again, write down your code to solve the problem in an R script file with comments, or a knitr/Sweave report with embedded R code and results.</p>
+</body>
+</html>

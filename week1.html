@@ -89,15 +89,17 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <h1 id="week-1">Week 1</h1>
 <h2 id="reading">Reading</h2>
 <ul>
-<li><p>An introduction to R -- the &quot;official&quot; introuction, very thorough and good for looking things up -- <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</a></p></li>
-<li><p>Try R -- Code School's very gentle introduction to R <a href="http://tryr.codeschool.com/" class="uri">http://tryr.codeschool.com/</a></p></li>
+<li><p>An introduction to R -- the &quot;official&quot; introuction, very thorough and good for looking things up. The first three chapters are a good place to start. -- <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</a></p></li>
+<li><p>If you are not so used to programming at all, I suggest having a look at Try R -- Code School's very gentle introduction to R <a href="http://tryr.codeschool.com/" class="uri">http://tryr.codeschool.com/</a></p></li>
 <li><p>The university library also has several books on R as e-books, e.g. Norman Matloff's The art of R programming. <a href="http://www.bibl.liu.se" class="uri">http://www.bibl.liu.se</a></p></li>
 <li><p>Cookbook for R, ggplot2 -- particularly helpful for changing options and formatting in ggplot2 -- <a href="http://www.cookbook-r.com/Graphs/" class="uri">http://www.cookbook-r.com/Graphs/</a></p></li>
-<li><p>R for data science, by guru Hadley Wickham -- will teach you modern advanced R packages right away, and make you look like a genius -- <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a></p></li>
 </ul>
 <h2 id="exercises">Exercises</h2>
+<p>Hints:</p>
+<p>Every time you encounter a function name that you don't recognize, try looking at the help file (e.g. enter <code>?sum</code> to see the help file for the <code>sum</code> function).</p>
+<p>The <code>qplot</code> function is part of ggplot2. To load the package, use <code>library(ggplot2)</code>.</p>
 <ul>
-<li><p>The `mens_long_jump_records.txt&quot; contains the world records in mens' long jump from 1901 up until now. Read this file into R, and make a plot of the record progression. Look through the available kinds of graphics (&quot;geoms&quot;) in the ggplot2 documentation <a href="http://docs.ggplot2.org/current/" class="uri">http://docs.ggplot2.org/current/</a> and try a couple of different ones. Use the xlim() function to extend the x-axis of the graph so that it ends in 2016. Convert the jumps to feet (1 foot is 0.3048 meters), and store in a new column of the data frame.</p></li>
+<li><p>The <code>mens_long_jump_records.txt</code> contains the world records in men's long jump from 1901 up until now. Read this file into R, and make a plot of the record progression. Look through the available kinds of graphics (&quot;geoms&quot;) in the ggplot2 documentation <a href="http://docs.ggplot2.org/current/" class="uri">http://docs.ggplot2.org/current/</a> and try a couple of different ones. Use the xlim() function to extend the x-axis of the graph so that it ends in 2016. Convert the jumps to feet (1 foot is 0.3048 meters), and store in a new column of the data frame.</p></li>
 <li><p>Read the help file on the seq() function. Use it to make a vector of the even numbers between 1 and 100.</p></li>
 <li><p>Use R's inbuilt sin() and cos() functions in combination with qplot() to draw a sine and a cosine wave. (Hint: first, use <code>x &lt;- seq(from = 0, to = 2 * pi, by = 0.1)</code> to generate an x-variable to operate on). Can you draw them on top of each other in the same plot?</p></li>
 <li><p>The file <code>coin_toss.R</code> contains these two functions. The first simulates a series of coin tosses, returning a vector where &quot;h&quot; means heads and &quot;t&quot; means tails. The second takes such a vector of tosses, and finds the length of runs of the same coin. Run this script with the source() function. Now you can use the functions. Try them out! Use the table() function to count the numbers of heads and tails in simulated tosses. Combine it with the prop.test() function for a statistical test of the hypothesis that the tosses are fair. Use the max() function to find the longest run in a simulated series of 10000 tosses.</p></li>
@@ -127,6 +129,6 @@ runs &lt;-<span class="st"> </span>function(tosses) {
 <h2 id="homework">Homework</h2>
 <p>The first homework consists of some statisical analysis of the fictious unicorn dataset.</p>
 <p>Write down your code to solve the problem in an R script file with comments. It should run without intervention and produce the answers to the questions.</p>
-<p>If you prefer, you can use one of the systems (knitr or Sweave) for embedding R code in a document. In that case, hand in an Rmd or Rnw file.</p>
+<p>If you prefer, you can use one of the systems (knitr or Sweave) for embedding R code in a document. In that case, hand in the resulting html or pdf output file.</p>
 </body>
 </html>

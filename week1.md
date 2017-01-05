@@ -3,20 +3,25 @@
 
 ##Reading
 
-* An introduction to R -- the "official" introuction, very thorough and good for looking things up -- <https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf>
+* An introduction to R -- the "official" introuction, very thorough and good for looking things up. The first three chapters are a good place to start. -- <https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf>
 
-* Try R -- Code School's very gentle introduction to R <http://tryr.codeschool.com/>
+* If you are not so used to programming at all, I suggest having a look at Try R -- Code School's very gentle introduction to R <http://tryr.codeschool.com/>
 
 * The university library also has several books on R as e-books, e.g. Norman Matloff's The art of R programming. <http://www.bibl.liu.se>
 
 * Cookbook for R, ggplot2 -- particularly helpful for changing options and formatting in ggplot2 -- <http://www.cookbook-r.com/Graphs/>
 
-* R for data science, by guru Hadley Wickham -- will teach you modern advanced R packages right away, and make you look like a genius -- <http://r4ds.had.co.nz/>
 
 
 ##Exercises
 
-* The `mens_long_jump_records.txt" contains the world records in mens' long jump from 1901 up until now. Read this file into R, and make a plot of the record progression. Look through the available kinds of graphics ("geoms") in the ggplot2 documentation <http://docs.ggplot2.org/current/> and try a couple of different ones. Use the xlim() function to extend the x-axis of the graph so that it ends in 2016. Convert the jumps to feet (1 foot is 0.3048 meters), and store in a new column of the data frame.
+Hints:
+
+Every time you encounter a function name that you don't recognize, try looking at the help file (e.g. enter `?sum` to see the help file for the `sum` function).
+
+The `qplot` function is part of ggplot2. To load the package, use `library(ggplot2)`.
+
+* The `mens_long_jump_records.txt` contains the world records in men's long jump from 1901 up until now. Read this file into R, and make a plot of the record progression. Look through the available kinds of graphics ("geoms") in the ggplot2 documentation <http://docs.ggplot2.org/current/> and try a couple of different ones. Use the xlim() function to extend the x-axis of the graph so that it ends in 2016. Convert the jumps to feet (1 foot is 0.3048 meters), and store in a new column of the data frame.
 
 * Read the help file on the seq() function. Use it to make a vector of the even numbers between 1 and 100.
 
@@ -55,4 +60,4 @@ The first homework consists of some statisical analysis of the fictious unicorn 
 
 Write down your code to solve the problem in an R script file with comments. It should run without intervention and produce the answers to the questions.
 
-If you prefer, you can use one of the systems (knitr or Sweave) for embedding R code in a document. In that case, hand in an Rmd or Rnw file.
+If you prefer, you can use one of the systems (knitr or Sweave) for embedding R code in a document. In that case, hand in the resulting html or pdf output file.
