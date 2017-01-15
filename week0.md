@@ -14,7 +14,7 @@ First, install [R](https://www.r-project.org/). You can find the download page o
 Then, install [RStudio](https://www.rstudio.com/). The download page is here: <https://www.rstudio.com/products/rstudio/download/>
 
 
-## Getting aquainted with RStudio
+## Getting acquainted with RStudio
 
 Launch RStudio. Look around. The RStudio interface consists of a set of panels:
 
