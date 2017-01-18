@@ -40,3 +40,5 @@ install.packages(c("ggplot2", "plyr", "reshape2", "stringr"), dependencies = TRU
 Press enter. R will download and install these packages and a series of other packages that they depend on. 
 
 Important: If RStudio asks you if you want to compile some of the packages or download binary versions, choose the binaries. Compilation is the process when a piece of a program is translated into machine code. This requires special tools, and if you aren't a developer, chances are that they are not installed on your computer.
+
+RStudio will also perform a few package installations when first using some features. A few of these are associated with the Import Dataset button, which we will use. Click on "Import Dataset" in the top right panel, and choose "From CSV". RStudio will ask, and then the installation will proceed automatically.
