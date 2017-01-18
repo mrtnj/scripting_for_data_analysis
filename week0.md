@@ -34,7 +34,7 @@ Launch RStudio. Look around. The RStudio interface consists of a set of panels:
 A lot of R's power comes from packages by developers in the community. The package system within R can download and install them for you. Many are hosted on the R package repository called CRAN. We will need several packages for this course. To install them, go to the Console in RStudio, and write:
 
 ```
-install.packages(c("ggplot2", "plyr", "reshape2"))
+install.packages(c("ggplot2", "plyr", "reshape2", "stringr"), dependencies = TRUE)
 ```
 
 Press enter. R will download and install these packages and a series of other packages that they depend on. 

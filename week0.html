@@ -70,7 +70,7 @@
 </div>
 <h2 id="installing-packages">Installing packages</h2>
 <p>A lot of R's power comes from packages by developers in the community. The package system within R can download and install them for you. Many are hosted on the R package repository called CRAN. We will need several packages for this course. To install them, go to the Console in RStudio, and write:</p>
-<pre><code>install.packages(c(&quot;ggplot2&quot;, &quot;plyr&quot;, &quot;reshape2&quot;))</code></pre>
+<pre><code>install.packages(c(&quot;ggplot2&quot;, &quot;plyr&quot;, &quot;reshape2&quot;, &quot;stringr&quot;), dependencies = TRUE)</code></pre>
 <p>Press enter. R will download and install these packages and a series of other packages that they depend on.</p>
 <p>Important: If RStudio asks you if you want to compile some of the packages or download binary versions, choose the binaries. Compilation is the process when a piece of a program is translated into machine code. This requires special tools, and if you aren't a developer, chances are that they are not installed on your computer.</p>
 </body>
