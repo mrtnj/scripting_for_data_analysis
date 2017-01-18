@@ -22,4 +22,47 @@
 
 The second homework combines the unicorn dataset with some additional (just as fictional) molecular data.
 
-Again, write down your code to solve the problem in an R script file with comments, or a knitr/Sweave report with embedded R code and results.
+Again, write down your code to solve the problem in an R script file with comments, or a knitr/Sweave file + the resulting report with embedded results.
+
+
+### 1. Formatting the expression dataset
+
+Read `unicorn_expression.txt`. Also, using code from last week, read the original unicorn data file.
+
+You will notice that the individual IDs look similar, but not quite identical. They are in fact supposed to refer to the same individuals, but the expression data frame has underscores between the U and the number. Also, the rows are in a different order. Modify one or both of the data frames so that the IDs match. (Hint: use the `str_replace` function from the stringr package.)
+
+
+### 2. Principal component analysis
+
+Principal component analysis is a common way to simplify, visualize and look for patterns in multivariate data. Use the `prcomp` function to perform principal component analysis of the unicorn expression data.
+
+Make a scatterplot of the first two principal components (the scores for each individual are stored in the `x` component of the object). You should see one point for each individual. Do they form any apparent pattern? Also plot the second against the third principal component.
+
+Combine the principal components with the unicorn data frame, so that you can give the points different colours depending on the colour and diet of the unicorn. Make on coloured by diet and one coloured by unicorn colour. (Hint: Make a data frame that contains the principal component scores and an id column, then use the `merge` function.) Do the apparent clusters correspond with diet or colour of the unicorn?
+
+
+### 3. Boxplots of individuals
+
+Another useful graph is to show all all the values broken down by individual. That tells us whether the overall values of the variables are comparable between individuals. This may reveal really drastic patterns or technical artefacts.
+
+Transform the expression values to long form with the `melt` function. Then make a boxplots that have `value` on the y-axis, and `ID` on the x-axis. What do you see?
+
+Again, combine this data with the unicorn data, so that you can colour each boxplot depending on the diet and colour of the individual.
+
+
+
+### 4. Linear models
+
+Make sure that you have a long form ("melted") dataset that contains the expression values combined with diet and colour. (This would be the same dataset that you used for coloured boxplots.) Make sure it is called `expression_melted`.
+
+Write a function that takes a data frame in that long format, and fits a model `value ~ diet + colour`. Call the function `unicorn_expression_model`. Make sure that it works and returns an `lm` object.
+
+Then, use the following code:
+
+```
+library(plyr)
+models <- dlply(expression_melted, "variable", unicorn_expression_model)
+llply(models, summary)
+```
+
+We will go into plyr and its functions in detail next week. But try to reason what this code did. What did it return? Which of the genes are significantly different between diets and colours at the 1% level?
