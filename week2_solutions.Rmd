@@ -16,6 +16,7 @@ library(ggplot2)
 library(plyr)
 library(reshape2)
 library(readr)
+library(stringr)
 ```
 
 
@@ -81,11 +82,12 @@ We make a scatterplot:
 qplot(x = women, y = men, data = year_best_fixed)
 ```
 
-And calculate correlation:
+And calculate correlation and regression:
 
 ```{r}
 cor(year_best_fixed$women, year_best_fixed$men, use = "pairwise")
 cor.test(year_best_fixed$women, year_best_fixed$men)
+lm(women ~ men, year_best_fixed)
 ```
 
 
@@ -123,4 +125,13 @@ Try it out:
 x <- seq(from = 0, to = 2 * pi, by = 0.1)
 trigonometric_table(x)
 ```
+
+
+# 5
+
+```{r}
+filenames <- paste("data_", 1:14, ".txt", sep = "")
+str_replace(filenames, pattern = ".txt", replacement = "")
+```
+
 
