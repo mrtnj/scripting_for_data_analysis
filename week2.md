@@ -41,13 +41,13 @@ Make a scatterplot of the first two principal components (the scores for each in
 Combine the principal components with the unicorn data frame, so that you can give the points different colours depending on the colour and diet of the unicorn. Make on coloured by diet and one coloured by unicorn colour. (Hint: Make a data frame that contains the principal component scores and an id column, then use the `merge` function.) Do the apparent clusters correspond with diet or colour of the unicorn?
 
 
-### 3. Boxplots of individuals
+### 3. Plots broken down by gene
 
-Another useful graph is to show all all the values broken down by individual. That tells us whether the overall values of the variables are comparable between individuals. This may reveal really drastic patterns or technical artefacts.
+Another useful graph might be to show the expression for all individuals together. 
 
-Transform the expression values to long form with the `melt` function. Then make a boxplots that have `value` on the y-axis, and `ID` on the x-axis. What do you see?
+Transform the expression values to long form with the `melt` function. Then make a plots that have `value` on the y-axis, and `variable` on the x-axis. Try both boxplots and jittered points. What do you see? 
 
-Again, combine this data with the unicorn data, so that you can colour each boxplot depending on the diet and colour of the individual.
+Again, combine this data with the unicorn data, so that you can colour each boxplot or point depending on the diet and colour of the individual.
 
 
 

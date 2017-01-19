@@ -68,10 +68,10 @@
 <p>Principal component analysis is a common way to simplify, visualize and look for patterns in multivariate data. Use the <code>prcomp</code> function to perform principal component analysis of the unicorn expression data.</p>
 <p>Make a scatterplot of the first two principal components (the scores for each individual are stored in the <code>x</code> component of the object). You should see one point for each individual. Do they form any apparent pattern? Also plot the second against the third principal component.</p>
 <p>Combine the principal components with the unicorn data frame, so that you can give the points different colours depending on the colour and diet of the unicorn. Make on coloured by diet and one coloured by unicorn colour. (Hint: Make a data frame that contains the principal component scores and an id column, then use the <code>merge</code> function.) Do the apparent clusters correspond with diet or colour of the unicorn?</p>
-<h3 id="boxplots-of-individuals">3. Boxplots of individuals</h3>
-<p>Another useful graph is to show all all the values broken down by individual. That tells us whether the overall values of the variables are comparable between individuals. This may reveal really drastic patterns or technical artefacts.</p>
-<p>Transform the expression values to long form with the <code>melt</code> function. Then make a boxplots that have <code>value</code> on the y-axis, and <code>ID</code> on the x-axis. What do you see?</p>
-<p>Again, combine this data with the unicorn data, so that you can colour each boxplot depending on the diet and colour of the individual.</p>
+<h3 id="plots-broken-down-by-gene">3. Plots broken down by gene</h3>
+<p>Another useful graph might be to show the expression for all individuals together.</p>
+<p>Transform the expression values to long form with the <code>melt</code> function. Then make a plots that have <code>value</code> on the y-axis, and <code>variable</code> on the x-axis. Try both boxplots and jittered points. What do you see?</p>
+<p>Again, combine this data with the unicorn data, so that you can colour each boxplot or point depending on the diet and colour of the individual.</p>
 <h3 id="linear-models">4. Linear models</h3>
 <p>Make sure that you have a long form (&quot;melted&quot;) dataset that contains the expression values combined with diet and colour. (This would be the same dataset that you used for coloured boxplots.) Make sure it is called <code>expression_melted</code>.</p>
 <p>Write a function that takes a data frame in that long format, and fits a model <code>value ~ diet + colour</code>. Call the function <code>unicorn_expression_model</code>. Make sure that it works and returns an <code>lm</code> object.</p>
