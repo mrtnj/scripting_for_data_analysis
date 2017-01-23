@@ -5,7 +5,10 @@
 
 * If you are not so used to programming at all, I suggest having a look at Try R -- Code School's very gentle introduction to R <http://tryr.codeschool.com/>
 
-* An introduction to R -- the "official" introuction, very thorough and good for looking things up, but somewhat old-fashioned in places. The first sections 1-3, 6.3 and 11 are a good place to start. -- <https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf>
+* An introduction to R -- the "official" introuction, very thorough and good for looking things up, but somewhat old-fashioned in places. -- <https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf>
+    * The first sections 1-3, introduction, vectors and objects, are a good place to start.
+    * You can also have a look at section 6.3.1 and 6.3.3 about data frames. (But skip 6.3.2. This subsection deals with `attach` and `detach`, which I only recommend for playing practical jokes on dear friends.)
+    * Section 11 introduces statistical models in R. Read this to refresher on linear models and an introduction to R's formula syntax. Don't get to bogged down with the more advanced formula functions (`poly`, `Error` and the like) unless you have a special interest. I'd suggest reading 11.1-11.4, and skipping subsection 11.1.1. If you use generalized linear models in your work, you can keep going with 11.6.
 
 * The university library also has several books on R as e-books, e.g. Norman Matloff's The art of R programming. <http://www.bibl.liu.se>
 
