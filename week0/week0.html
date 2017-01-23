@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type = "text/css">
+  
+  body {
+      font-family: serif;
+      font-size: 1.1em;
+      margin-top: 5%;
+      margin-right: 10%;
+      margin-bottom: 5%;
+      margin-left: 10%;
+  }
+  
+  h1, h2 {
+      margin-top: 2em;
+  }
+  
+  
+  a:link {
+      color: hotpink;
+  }
+  
+  
+  a:visited {
+      color: hotpink;
+  }
+  
+  
+  a:hover {
+      color: red;
+  }
+  
+  
+  a:active {
+      color: red;
+  }
+  
+  .right {
+      float: right;
+      padding: 2em;
+  }
+  
+  </style>
+</head>
+<body>
+<h1 id="week-0-preliminaries">Week 0: Preliminaries</h1>
+<p>There are a few things we need to get out of the way before the course. Please do this in good time before the first seminar. Feel free to contact me if you have trouble, but if you plan to use your work computer for the course, you will probably have to seek help from the IT support with installation.</p>
+<p>The software is free and open source and available for the major platforms.</p>
+<h2 id="installing-r-and-rstudio">Installing R and RStudio</h2>
+<p>R is the engine, and RStudio is a convenient user interface and working environment. I strongly recommend RStudio, but it is quite possible to use R without it.</p>
+<p>First, install <a href="https://www.r-project.org/">R</a>. You can find the download page of the Swedish mirror here: <a href="https://ftp.acc.umu.se/mirror/CRAN/" class="uri">https://ftp.acc.umu.se/mirror/CRAN/</a></p>
+<p>Then, install <a href="https://www.rstudio.com/">RStudio</a>. The download page is here: <a href="https://www.rstudio.com/products/rstudio/download/" class="uri">https://www.rstudio.com/products/rstudio/download/</a></p>
+<h2 id="getting-acquainted-with-rstudio">Getting acquainted with RStudio</h2>
+<p>Launch RStudio. Look around. The RStudio interface consists of a set of panels:</p>
+<ul>
+<li><p>On the top left: a code editor and table viewer. This is where you will write your scripts.</p></li>
+<li><p>On the bottom left is the console where R is running inside RStudio. You can type commands and have them run immediately. Try putting in <code>1+1</code> and pressing enter.</p></li>
+<li><p>On the top right there is a panel that shows the objects that exist within the current R session, i.e. the numbers, tables, custom functions etc that R currently has in memory. There is also a second tab that shows the history of things you've entered into the console.</p></li>
+<li><p>Finally, on the bottom right there is a multi-purpose panel with tabs showing the built-in R documentation, graphics that you make, which packages are available and loaded, etc.</p></li>
+</ul>
+<div class="figure">
+<img src="rstudio.png" title="RStudio screenshot" alt="Rstudio screenshot" />
+<p class="caption">Rstudio screenshot</p>
+</div>
+<h2 id="installing-packages">Installing packages</h2>
+<p>A lot of R's power comes from packages by developers in the community. The package system within R can download and install them for you. Many are hosted on the R package repository called CRAN. We will need several packages for this course. To install them, go to the Console in RStudio, and write:</p>
+<pre><code>install.packages(c(&quot;ggplot2&quot;, &quot;plyr&quot;, &quot;reshape2&quot;, &quot;stringr&quot;), dependencies = TRUE)</code></pre>
+<p>Press enter. R will download and install these packages and a series of other packages that they depend on.</p>
+<p>Important: If RStudio asks you if you want to compile some of the packages or download binary versions, choose the binaries. Compilation is the process when a piece of a program is translated into machine code. This requires special tools, and if you aren't a developer, chances are that they are not installed on your computer.</p>
+<p>RStudio will also perform a few package installations when first using some features. A few of these are associated with the Import Dataset button, which we will use. Click on &quot;Import Dataset&quot; in the top right panel, and choose &quot;From CSV&quot;. RStudio will ask, and then the installation will proceed automatically.</p>
+</body>
+</html>
