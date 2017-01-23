@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title></title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type = "text/css">
+  
+  body {
+      font-family: serif;
+      font-size: 1.1em;
+      margin-top: 5%;
+      margin-right: 10%;
+      margin-bottom: 5%;
+      margin-left: 10%;
+  }
+  
+  h1, h2 {
+      margin-top: 2em;
+  }
+  
+  
+  a:link {
+      color: hotpink;
+  }
+  
+  
+  a:visited {
+      color: hotpink;
+  }
+  
+  
+  a:hover {
+      color: red;
+  }
+  
+  
+  a:active {
+      color: red;
+  }
+  
+  .right {
+      float: right;
+      padding: 2em;
+  }
+  
+  </style>
+</head>
+<body>
+<h1 id="week-2">Week 2</h1>
+<h2 id="reading">Reading</h2>
+<h2 id="exercises">Exercises</h2>
+<ul>
+<li><p>Look back at the <code>mens_long_jump_records.txt</code> from last week. There is also a file called <code>mens_long_jump_year_best.txt</code>, which contains the season best in men's long jump from 1960 to 2015. Read both files into R, and make a graph that shows both time series together. This can be achieved in multiple ways. One way is to 1) add an indicator column that tells whether the observation is a record or a season best; 2) combined both data sets to one long dataframe with the <code>rbind</code> function; and 3) use the indicator column to colour the points differently. Another is to add, with the <code>+</code> operator, the second dataset as another layer (<code>geom_point</code>) to the plot.</p></li>
+<li><p>Another way to combine two data frames is to merge them, i.e. join them based on some column that identifies the rows. Read <code>womens_long_jump_year_best.txt</code>. Now <code>merge</code> that table with the one containing men's season best by year. It is perhaps useful to change the <code>colnames</code> of the table, either before or after the merging. What happens to 1986? (Hint: It is missing from the men's file.) Make a scatterplot of men's and women's results, and calculate the correlation (with <code>cor</code> or <code>cor.test</code>), and the regression (with <code>lm</code>).</p></li>
+<li><p>It is often useful to go back and forth between &quot;long form&quot; and &quot;short form&quot; data frames. To demonstrate the difference: the combined table of long jump results is in short form (each year is one row, and the two season best are stored in columns). In long form, each value (season best) would have its own row. Use the <code>melt</code> function (from the <code>reshape2</code> package) to create this data frame. Use <code>nrow</code> on the result, and the original data frame. Does the long form data frame have the expected number of rows?</p></li>
+<li><p>Look back at the problem of generating sine and cosine waves. First, rewrite your code it returns a <code>data.frame</code> with three columns containing x, sin(x), and cos(x). Then, encapsulate this code in a function of x. Show its output for different input vectors.</p></li>
+<li><p>Quite often, sample names, variable names and other identifiers have slight variation that needs to be ironed out before analysis can proceed. Imagine that we have a series of filenames called &quot;data_1.txt&quot; up to &quot;data_14.txt&quot;. First, create a vector with these filenames. (Hint: use <code>paste</code> and the <code>:</code> operator in conjunction. Also, set the <code>sep</code> argument to an empty string with <code>sep = &quot;&quot;</code>.) Then, use <code>str_replace</code> (from the stringr package) to remove the file extension (&quot;.txt&quot;).</p></li>
+</ul>
+<h2 id="homework">Homework</h2>
+<p>The second homework combines the unicorn dataset with some additional (just as fictional) molecular data.</p>
+<p>Again, write down your code to solve the problem in an R script file with comments, or a knitr/Sweave file + the resulting report with embedded results.</p>
+<h3 id="formatting-the-expression-dataset">1. Formatting the expression dataset</h3>
+<p>Read <code>unicorn_expression.txt</code>. Also, using code from last week, read the original unicorn data file.</p>
+<p>You will notice that the individual IDs look similar, but not quite identical. They are in fact supposed to refer to the same individuals, but the expression data frame has underscores between the U and the number. Also, the rows are in a different order. Modify one or both of the data frames so that the IDs match. (Hint: use the <code>str_replace</code> function from the stringr package.)</p>
+<h3 id="principal-component-analysis">2. Principal component analysis</h3>
+<p>Principal component analysis is a common way to simplify, visualize and look for patterns in multivariate data. Use the <code>prcomp</code> function to perform principal component analysis of the unicorn expression data.</p>
+<p>Make a scatterplot of the first two principal components (the scores for each individual are stored in the <code>x</code> component of the object). You should see one point for each individual. Do they form any apparent pattern? Also plot the second against the third principal component.</p>
+<p>Combine the principal components with the unicorn data frame, so that you can give the points different colours depending on the colour and diet of the unicorn. Make on coloured by diet and one coloured by unicorn colour. (Hint: Make a data frame that contains the principal component scores and an id column, then use the <code>merge</code> function.) Do the apparent clusters correspond with diet or colour of the unicorn?</p>
+<h3 id="plots-broken-down-by-gene">3. Plots broken down by gene</h3>
+<p>Another useful graph might be to show the expression for all individuals together.</p>
+<p>Transform the expression values to long form with the <code>melt</code> function. Then make a plots that have <code>value</code> on the y-axis, and <code>variable</code> on the x-axis. Try both boxplots and jittered points. What do you see?</p>
+<p>Again, combine this data with the unicorn data, so that you can colour each boxplot or point depending on the diet and colour of the individual.</p>
+<h3 id="linear-models">4. Linear models</h3>
+<p>Make sure that you have a long form (&quot;melted&quot;) dataset that contains the expression values combined with diet and colour. (This would be the same dataset that you used for coloured boxplots.) Make sure it is called <code>expression_melted</code>.</p>
+<p>Write a function that takes a data frame in that long format, and fits a model <code>value ~ diet + colour</code>. Call the function <code>unicorn_expression_model</code>. Make sure that it works and returns an <code>lm</code> object.</p>
+<p>Then, use the following code:</p>
+<pre><code>library(plyr)
+models &lt;- dlply(expression_melted, &quot;variable&quot;, unicorn_expression_model)
+llply(models, summary)</code></pre>
+<p>We will go into plyr and its functions in detail next week. But try to reason what this code did. What did it return? Which of the genes are significantly different between diets and colours at the 1% level?</p>
+</body>
+</html>
