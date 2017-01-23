@@ -3,6 +3,13 @@
 
 ##Reading
 
+* Now that you have started to write code may be a good time to look at coding stile. See style guide from Hadley Wickham's Advanced R <http://adv-r.had.co.nz/Style.html> and from Google <https://google.github.io/styleguide/Rguide.xml>. Especially the latter is pretty long, and you don't need to care about all of this. But have a look through and think about how you make your code understandable for your coworkers and future selves.
+
+* Chapter 11 on data import in R for Data Science. <http://r4ds.had.co.nz/data-import.html> Note the difference between the readr package (used by default in new versions of RStudio) and the old base R functions.
+
+* Section 10 of Writing your own functions in An Introduction to R. <https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf>
+
+* Cookbook for R -- Converting data between wide and long format. <http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/>
 
 
 ##Exercises
@@ -11,7 +18,7 @@
 
 * Another way to combine two data frames is to merge them, i.e. join them based on some column that identifies the rows. Read `womens_long_jump_year_best.txt`. Now `merge` that table with the one containing men's season best by year. It is perhaps useful to change the `colnames` of the table, either before or after the merging. What happens to 1986? (Hint: It is missing from the men's file.) Make a scatterplot of men's and women's results, and calculate the correlation (with `cor` or `cor.test`), and the regression (with `lm`).
 
-* It is often useful to go back and forth between "long form" and "short form" data frames. To demonstrate the difference: the combined table of long jump results is in short form (each year is one row, and the two season best are stored in columns). In long form, each value (season best) would have its own row. Use the `melt` function (from the `reshape2` package) to create this data frame. Use `nrow` on the result, and the original data frame. Does the long form data frame have the expected number of rows?
+* It is often useful to go back and forth between "long" and "wide" data frames. To demonstrate the difference: the combined table of long jump results is in short form (each year is one row, and the two season best are stored in columns). In long form, each value (season best) would have its own row. Use the `melt` function (from the `reshape2` package) to create this data frame. Use `nrow` on the result, and the original data frame. Does the long form data frame have the expected number of rows?
 
 * Look back at the problem of generating sine and cosine waves. First, rewrite your code it returns a `data.frame` with three columns containing x, sin(x), and cos(x). Then, encapsulate this code in a function of x. Show its output for different input vectors.
 
