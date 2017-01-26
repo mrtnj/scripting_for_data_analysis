@@ -52,13 +52,31 @@
 <h1 id="week-2">Week 2</h1>
 <h2 id="reading">Reading</h2>
 <ul>
-<li><p>Now that you have started to write code may be a good time to look at coding stile. See style guide from Hadley Wickham's Advanced R <a href="http://adv-r.had.co.nz/Style.html" class="uri">http://adv-r.had.co.nz/Style.html</a> and from Google <a href="https://google.github.io/styleguide/Rguide.xml" class="uri">https://google.github.io/styleguide/Rguide.xml</a>. Especially the latter is pretty long, and you don't need to care about all of this. But have a look through and think about how you make your code understandable for your coworkers and future selves.</p></li>
+<li><p>Now that you have started to write code may be a good time to look at coding style. See style guide from Hadley Wickham's Advanced R <a href="http://adv-r.had.co.nz/Style.html" class="uri">http://adv-r.had.co.nz/Style.html</a> and from Google <a href="https://google.github.io/styleguide/Rguide.xml" class="uri">https://google.github.io/styleguide/Rguide.xml</a>. Especially the latter is pretty long, and you don't need to care about all of this. But have a look through and think about how you make your code understandable for your coworkers and future selves.</p></li>
 <li><p>Chapter 11 on data import in R for Data Science. <a href="http://r4ds.had.co.nz/data-import.html" class="uri">http://r4ds.had.co.nz/data-import.html</a> Note the difference between the readr package (used by default in new versions of RStudio) and the old base R functions.</p></li>
-<li><p>Section 10 of Writing your own functions in An Introduction to R. <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</a></p></li>
+<li><p>Section 10 on writing your own functions of An Introduction to R. <a href="https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf" class="uri">https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf</a></p></li>
 <li><p>Cookbook for R -- Converting data between wide and long format. <a href="http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/" class="uri">http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/</a></p></li>
 </ul>
 <h2 id="exercises">Exercises</h2>
 <ul>
+<li>Here is a list of useful R functions. You have encountered many of them, but probably not all. If you don't recognize a function, use the documentation to find out what it does. Invent your own usage example.
+<ul>
+<li><code>summary</code></li>
+<li><code>str</code></li>
+<li><code>dim</code></li>
+<li><code>nrow</code></li>
+<li><code>ncol</code></li>
+<li><code>which</code></li>
+<li><code>any</code></li>
+<li><code>all</code></li>
+<li><code>colnames</code></li>
+<li><code>rownames</code></li>
+<li><code>transform</code></li>
+<li><code>factor</code></li>
+<li><code>rbind</code></li>
+<li><code>cbind</code></li>
+<li><code>c</code></li>
+</ul></li>
 <li><p>Look back at the <code>mens_long_jump_records.txt</code> from last week. There is also a file called <code>mens_long_jump_year_best.txt</code>, which contains the season best in men's long jump from 1960 to 2015. Read both files into R, and make a graph that shows both time series together. This can be achieved in multiple ways. One way is to 1) add an indicator column that tells whether the observation is a record or a season best; 2) combined both data sets to one long dataframe with the <code>rbind</code> function; and 3) use the indicator column to colour the points differently. Another is to add, with the <code>+</code> operator, the second dataset as another layer (<code>geom_point</code>) to the plot.</p></li>
 <li><p>Another way to combine two data frames is to merge them, i.e. join them based on some column that identifies the rows. Read <code>womens_long_jump_year_best.txt</code>. Now <code>merge</code> that table with the one containing men's season best by year. It is perhaps useful to change the <code>colnames</code> of the table, either before or after the merging. What happens to 1986? (Hint: It is missing from the men's file.) Make a scatterplot of men's and women's results, and calculate the correlation (with <code>cor</code> or <code>cor.test</code>), and the regression (with <code>lm</code>).</p></li>
 <li><p>It is often useful to go back and forth between &quot;long&quot; and &quot;wide&quot; data frames. To demonstrate the difference: the combined table of long jump results is in short form (each year is one row, and the two season best are stored in columns). In long form, each value (season best) would have its own row. Use the <code>melt</code> function (from the <code>reshape2</code> package) to create this data frame. Use <code>nrow</code> on the result, and the original data frame. Does the long form data frame have the expected number of rows?</p></li>
@@ -85,7 +103,7 @@
 <p>Then, use the following code:</p>
 <pre><code>library(plyr)
 models &lt;- dlply(expression_melted, &quot;variable&quot;, unicorn_expression_model)
-llply(models, summary)</code></pre>
-<p>We will go into plyr and its functions in detail next week. But try to reason what this code did. What did it return? Which of the genes are significantly different between diets and colours at the 1% level?</p>
+ldply(models, coef)</code></pre>
+<p>We will go into plyr and its functions in detail next week. But try to reason what this code did. What did it return? Modify it to create a table of confidence intervals.</p>
 </body>
 </html>

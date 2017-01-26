@@ -3,16 +3,33 @@
 
 ##Reading
 
-* Now that you have started to write code may be a good time to look at coding stile. See style guide from Hadley Wickham's Advanced R <http://adv-r.had.co.nz/Style.html> and from Google <https://google.github.io/styleguide/Rguide.xml>. Especially the latter is pretty long, and you don't need to care about all of this. But have a look through and think about how you make your code understandable for your coworkers and future selves.
+* Now that you have started to write code may be a good time to look at coding style. See style guide from Hadley Wickham's Advanced R <http://adv-r.had.co.nz/Style.html> and from Google <https://google.github.io/styleguide/Rguide.xml>. Especially the latter is pretty long, and you don't need to care about all of this. But have a look through and think about how you make your code understandable for your coworkers and future selves.
 
 * Chapter 11 on data import in R for Data Science. <http://r4ds.had.co.nz/data-import.html> Note the difference between the readr package (used by default in new versions of RStudio) and the old base R functions.
 
-* Section 10 of Writing your own functions in An Introduction to R. <https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf>
+* Section 10 on writing your own functions of An Introduction to R. <https://cran.r-project.org/doc/manuals/r-release/R-intro.pdf>
 
 * Cookbook for R -- Converting data between wide and long format. <http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/>
 
 
 ##Exercises
+
+* Here is a list of useful R functions. You have encountered many of them, but probably not all. If you don't recognize a function, use the documentation to find out what it does. Invent your own usage example.
+    * `summary`
+    * `str`
+    * `dim`
+    * `nrow`
+    * `ncol`
+    * `which`
+    * `any`
+    * `all`
+    * `colnames`
+    * `rownames`
+    * `transform`
+    * `factor`
+    * `rbind`
+    * `cbind`
+    * `c`
 
 * Look back at the  `mens_long_jump_records.txt` from last week. There is also a file called `mens_long_jump_year_best.txt`, which contains the season best in men's long jump from 1960 to 2015. Read both files into R, and make a graph that shows both time series together. This can be achieved in multiple ways. One way is to 1) add an indicator column that tells whether the observation is a record or a season best; 2) combined both data sets to one long dataframe with the `rbind` function; and 3) use the indicator column to colour the points differently. Another is to add, with the `+` operator, the second dataset as another layer (`geom_point`) to the plot.
 
@@ -71,7 +88,7 @@ Then, use the following code:
 ```
 library(plyr)
 models <- dlply(expression_melted, "variable", unicorn_expression_model)
-llply(models, summary)
+ldply(models, coef)
 ```
 
-We will go into plyr and its functions in detail next week. But try to reason what this code did. What did it return? Which of the genes are significantly different between diets and colours at the 1% level?
+We will go into plyr and its functions in detail next week. But try to reason what this code did. What did it return? Modify it to create a table of confidence intervals.
