@@ -1,0 +1,153 @@
+---
+title: "Week 3 suggested solutions"
+author: "Martin Johnsson"
+date: "10 februari 2017"
+output: html_document
+---
+
+## 1
+
+```{r}
+draws <- rnorm(1000, 2, 1)
+length(which(a < 0 | a > 4))/1000
+```
+
+We can get the probability of a number smaller or greather than a certain value from the cumulative distribution function.
+
+```{r}
+pnorm(0, mean = 2, sd = 1)
+pnorm(4, mean = 2, sd = 1, lower.tail = FALSE)
+```
+
+Because of symmetry, they are the same, so:
+
+```{r}
+2 * pnorm(0, mean = 2, sd = 1)
+```
+
+
+## 2
+
+```{r}
+many_draws <- replicate(10000, rnorm(100, 2, 1), simplify = FALSE)
+many_means <- ldply(many_draws, mean)
+quantile(many_means$V1, c(0.05, 0.95))
+```
+
+The standard error of the mean is one over the square root of the number of samples (i.e. 0.1).
+
+An approximate 95% confidence interval is plus and minus two standard errors of the mean around:
+
+```{r}
+(sem <- 1 / sqrt(100))
+c(2 - 2 * sem, 2 + 2 * sem)
+```
+
+
+## 3
+
+```{r}
+x <- sample(c("raindrops", "roses", "whiskers"), 100, replace = TRUE)
+y <- 1 + 2* ifelse(x == "raindrops", 1, 0) + 3 * ifelse(x == "whiskers", 1, 0) + rnorm(100, 0, 2)
+favourite_things <- data.frame(x, y)
+```
+
+Plot:
+
+```{r}
+qplot(x = x, y = y, data = favourite_things, geom = "boxplot")
+```
+
+Anova:
+
+```{r}
+model <- lm(y ~ x, data = favourite_things)
+drop1(model, test = "F")
+```
+
+
+## 4
+
+Simulation and analysis functions:
+
+```{r}
+simulate_things <- function(n) {
+  x <- sample(c("raindrops", "roses", "whiskers"), n, replace = TRUE)
+  y <- 1 + 0.5 * ifelse(x == "raindrops", 1, 0) + ifelse(x == "whiskers", 1, 0) + rnorm(n)
+  data.frame(x, y)
+}
+analyze_things <- function(things) {
+  lm(y ~ x, data = things)
+}
+get_p_value <- function(model) {
+  drop <- drop1(model, test = "F")
+  drop$"Pr(>F)"[2]
+}
+```
+
+A test drive:
+
+```{r}
+one_rep <- analyze_things(simulate_things(100))
+get_p_value(one_rep)
+```
+
+Replicated larger data:
+
+```{r}
+sim_things_100 <- replicate(1000, analyze_things(simulate_things(100)), simplify = FALSE)
+sim_p_100 <- llply(sim_things_100, get_p_value)
+sum(sim_p_100 < 0.05)/1000
+```
+
+Replicated smaller data:
+
+```{r}
+sim_things_50 <- replicate(1000, analyze_things(simulate_things(50)), simplify = FALSE)
+sim_p_50 <- llply(sim_things_50, get_p_value)
+sum(sim_p_50 < 0.05)/1000
+
+sim_things_10 <- replicate(1000, analyze_things(simulate_things(10)), simplify = FALSE)
+sim_p_10 <- llply(sim_things_10, get_p_value)
+sum(sim_p_10 < 0.05)/1000
+```
+
+
+## 5
+
+```{r}
+get_estimates_p <- function(model) {
+  coefs <- coef(model)
+  data.frame(raindrops = coefs[1],
+             roses = coefs[1] + coefs[2],
+             whiskers = coefs[1] + coefs[3],
+             p = get_p_value(model))
+}
+```
+
+Apply it:
+
+```{r}
+estimates_100 <- ldply(sim_things_100, get_estimates_p)
+mean(estimates_100$raindrops)
+mean(estimates_100$roses)
+mean(estimates_100$whiskers)
+sign_estimates_100 <- subset(estimates_100, p < 0.05)
+mean(sign_estimates_100$raindrops)
+mean(sign_estimates_100$roses)
+mean(sign_estimates_100$whiskers)
+```
+That looked good. How about a small sample size?
+
+```{r}
+estimates_10 <- ldply(sim_things_10, get_estimates_p)
+mean(estimates_10$raindrops)
+mean(estimates_10$roses)
+mean(estimates_10$whiskers)
+sign_estimates_10 <- subset(estimates_10, p < 0.05)
+mean(sign_estimates_10$raindrops)
+mean(sign_estimates_10$roses)
+mean(sign_estimates_10$whiskers)
+```
+
+
