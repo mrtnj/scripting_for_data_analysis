@@ -16,11 +16,15 @@
 
 * Instead, simulate 100 samples from the same distribution, and repeat the process 1000 times. (Hint: use `replicate` and set `simplify = FALSE` if you prefer working with a list rather than a matrix.) Use `plyr` and `mean` to get the mean for each replicate. Use the `quantile` function to get the 5% and 95% percentile of the means. Is this what you would expect from theory?
 
-* Let's simulate a simple analysis of variance (of some of my favourite things). Imagine that we have two categorical variables. Use `sample` to draw 100 samples from the vector `c("raindrops", "roses", "whiskers")` to be variable x. Create a response variable y, which equals 1 plus 0.5 if x is "raindrops" and 1 if x is "whiskers". Add random varition by adding 100 draws from a standard normal distribution (`rnorm(100)`). Put x and y into a data frame. Plot this data. Use `lm` and `drop1` to estimate coefficients and perform an F-test.
+* Let's simulate a simple analysis of variance (of some of my favourite things). Imagine that we have two categorical variables. Use `rep`and `c` to create a vector with 20 elements each of "raindrops", "roses", and "whiskers" to be variable x. Create a response variable y, which equals 1 plus 0.5 if x is "raindrops" and 1 if x is "whiskers". Add random varition by adding 100 draws from a standard normal distribution (`rnorm(100)`). Put x and y into a data frame. Plot this data. Use `lm` and `drop1` to estimate coefficients and perform an F-test.
 
-* Package the above analysis in a function that does the simulation and one function that does the analysis. Let the simulation function take the number of samples as a parameter. Then repeat the above analysis 1000 times. Use the results to estimate the power of design. (Hint: The p-value of the test is in a component of the object you get from `drop1`. Assuming that you have saved the output of `drop1` in a variable called "drop", you can get it with: `drop$"Pr(>F)"[2]`.) Try the same thing with 50 and 25 samples. What is the power then?
+* Package the above analysis in a function that does the simulation and one function that does the analysis. Let the simulation function take the number of samples in each group as a parameter. Then repeat the above analysis 1000 times. Use the results to estimate the power of design. (Hint: The p-value of the test is in a component of the object you get from `drop1`. Assuming that you have saved the output of `drop1` in a variable called "drop", you can get it with: `drop$"Pr(>F)"[2]`.) Try the same thing with 10 and 7 samples per group. What is the power then?
 
-* Modify the above code to look at the estimates instead of the F-test. For each replicate, pull out the estimates for all three groups in addition to the p-value. It would probably be most convenient to put them in a data frame. Then find the mean estimate, across the replicates, for 1) all the replicates; 2) only the replicates that were statistically significant. Do you recover the known correct values?
+* Make boxplots or jittered scatterplots showing a few few simulated datasets side by side. (Hint: use `facet_wrap`.)
+
+* Look back at the coin toss functions from Week 1. Reimplement the `sim_data` function, but use `rbinom` instead of `sample`. (Hint: Use a binomial distribution with a trial number of one and a probability of success 0.5.) Make it take the same parameter and return its results in the same way as the original function.
+
+
 
 
 ##Homework

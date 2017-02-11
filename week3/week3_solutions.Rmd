@@ -5,11 +5,17 @@ date: "10 februari 2017"
 output: html_document
 ---
 
+```{r}
+library(plyr)
+library(ggplot2)
+```
+
+
 ## 1
 
 ```{r}
 draws <- rnorm(1000, 2, 1)
-length(which(a < 0 | a > 4))/1000
+length(which(draws < 0 | draws > 4))/1000
 ```
 
 We can get the probability of a number smaller or greather than a certain value from the cumulative distribution function.
@@ -72,7 +78,7 @@ Simulation and analysis functions:
 
 ```{r}
 simulate_things <- function(n) {
-  x <- sample(c("raindrops", "roses", "whiskers"), n, replace = TRUE)
+  x <- rep(c("raindrops", "roses", "whiskers"), n)
   y <- 1 + 0.5 * ifelse(x == "raindrops", 1, 0) + ifelse(x == "whiskers", 1, 0) + rnorm(n)
   data.frame(x, y)
 }
@@ -88,66 +94,47 @@ get_p_value <- function(model) {
 A test drive:
 
 ```{r}
-one_rep <- analyze_things(simulate_things(100))
+one_rep <- analyze_things(simulate_things(20))
 get_p_value(one_rep)
 ```
 
 Replicated larger data:
 
 ```{r}
-sim_things_100 <- replicate(1000, analyze_things(simulate_things(100)), simplify = FALSE)
-sim_p_100 <- llply(sim_things_100, get_p_value)
-sum(sim_p_100 < 0.05)/1000
+sim_things_20 <- replicate(1000, analyze_things(simulate_things(20)), simplify = FALSE)
+sim_p_20 <- llply(sim_things_20, get_p_value)
+sum(sim_p_20 < 0.05)/1000
 ```
 
 Replicated smaller data:
 
 ```{r}
-sim_things_50 <- replicate(1000, analyze_things(simulate_things(50)), simplify = FALSE)
-sim_p_50 <- llply(sim_things_50, get_p_value)
-sum(sim_p_50 < 0.05)/1000
-
 sim_things_10 <- replicate(1000, analyze_things(simulate_things(10)), simplify = FALSE)
 sim_p_10 <- llply(sim_things_10, get_p_value)
 sum(sim_p_10 < 0.05)/1000
+
+sim_things_7 <- replicate(1000, analyze_things(simulate_things(7)), simplify = FALSE)
+sim_p_7 <- llply(sim_things_7, get_p_value)
+sum(sim_p_7 < 0.05)/1000
 ```
 
 
 ## 5
 
+When we want the output in one data frame, ldply will aggregate it much more nicely than replicate.
+
 ```{r}
-get_estimates_p <- function(model) {
-  coefs <- coef(model)
-  data.frame(raindrops = coefs[1],
-             roses = coefs[1] + coefs[2],
-             whiskers = coefs[1] + coefs[3],
-             p = get_p_value(model))
+sim_data <- ldply(1:6, function(i) transform(simulate_things(10), replicate = i))
+qplot(x = x, y = y, data = sim_data, geom = "boxplot") + facet_wrap(~ replicate)
+```
+
+
+## 6
+
+```{r}
+coin_toss <- function(nsim) {
+  successes <- rbinom(nsim, size = 1, p = 0.5)
+  ifelse(successes == 1, "t", "h")
 }
 ```
-
-Apply it:
-
-```{r}
-estimates_100 <- ldply(sim_things_100, get_estimates_p)
-mean(estimates_100$raindrops)
-mean(estimates_100$roses)
-mean(estimates_100$whiskers)
-sign_estimates_100 <- subset(estimates_100, p < 0.05)
-mean(sign_estimates_100$raindrops)
-mean(sign_estimates_100$roses)
-mean(sign_estimates_100$whiskers)
-```
-That looked good. How about a small sample size?
-
-```{r}
-estimates_10 <- ldply(sim_things_10, get_estimates_p)
-mean(estimates_10$raindrops)
-mean(estimates_10$roses)
-mean(estimates_10$whiskers)
-sign_estimates_10 <- subset(estimates_10, p < 0.05)
-mean(sign_estimates_10$raindrops)
-mean(sign_estimates_10$roses)
-mean(sign_estimates_10$whiskers)
-```
-
 
