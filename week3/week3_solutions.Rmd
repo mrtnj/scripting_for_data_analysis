@@ -145,3 +145,54 @@ coin_toss <- function(nsim) {
 }
 ```
 
+
+
+## 7 
+
+See if you can find a more elegant solution than my rather clunky llply call!
+
+```{r}
+x <- runif(100, 0, 1)
+y <- 1 + x * 3 + unlist(llply(x, function(x) {
+  if (x < 0.6)
+    rnorm(1, 0, 1)
+  else
+    rnorm(1, 0, 2)
+}))
+qplot(x, y) + geom_smooth(method = lm)
+```
+
+
+## 8
+
+A function to perform the above simulation:
+
+```{r}
+simulate_regression <- function(cutoff) {
+  x <- runif(100, 0, 1)
+  y <- 1 + x * 3 + unlist(llply(x, function(x) {
+  if (x < cutoff)
+    rnorm(1, 0, 1)
+  else
+    rnorm(1, 0, 2)
+  }))
+  data.frame(x, y)  
+}
+```
+
+Generate random cutoffs and apply function.
+
+Adding names makes ldply automatically label each simulation with the .id column.
+
+```{r}
+cutoffs <- runif(10, 0, 1)
+names(cutoffs) <- 1:10
+simulated_regressions <- ldply(cutoffs, simulate_regression)
+```
+
+Plots:
+
+```{r}
+qplot(x = x, y = y, data = simulated_regressions) + facet_wrap(~ .id)
+```
+
