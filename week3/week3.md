@@ -20,7 +20,7 @@
 
 * Package the above analysis in a function that does the simulation and one function that does the analysis. Let the simulation function take the number of samples in each group as a parameter. Then repeat the above analysis 1000 times. Use the results to estimate the power of design. (Hint: The p-value of the test is in a component of the object you get from `drop1`. Assuming that you have saved the output of `drop1` in a variable called "drop", you can get it with: `drop$"Pr(>F)"[2]`.) Try the same thing with 10 and 7 samples per group. What is the power then?
 
-* Make boxplots or jittered scatterplots showing a few few simulated datasets side by side. (Hint: use `facet_wrap`.)
+* Make boxplots or jittered scatterplots showing a few few simulated datasets side by side. (Hint: use `facet_wrap`.) Use `ddply` or a loop to create a data frame that shows, for each replicate, average and standard deviation for each group.
 
 * Look back at the coin toss functions from Week 1. Reimplement the `sim_data` function, but use `rbinom` instead of `sample`. (Hint: Use a binomial distribution with a trial number of one and a probability of success 0.5.) Make it take the same parameter and return its results in the same way as the original function.
 

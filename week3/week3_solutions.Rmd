@@ -128,6 +128,13 @@ sim_data <- ldply(1:6, function(i) transform(simulate_things(10), replicate = i)
 qplot(x = x, y = y, data = sim_data, geom = "boxplot") + facet_wrap(~ replicate)
 ```
 
+A summary table using:
+
+```{r}
+ddply(sim_data, c("replicate", "x"), summarise, average = mean(y), stdev = sd(y))
+```
+
+
 
 ## 6
 
