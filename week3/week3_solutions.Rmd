@@ -162,6 +162,13 @@ y <- 1 + x * 3 + unlist(llply(x, function(x) {
 qplot(x, y) + geom_smooth(method = lm)
 ```
 
+Model and residuals:
+
+```{r}
+model <- lm(y ~ x)
+qplot(fitted(model), residuals(model))
+```
+
 
 ## 8
 
@@ -190,9 +197,20 @@ names(cutoffs) <- 1:10
 simulated_regressions <- ldply(cutoffs, simulate_regression)
 ```
 
-Plots:
+Scatterplots:
 
 ```{r}
 qplot(x = x, y = y, data = simulated_regressions) + facet_wrap(~ .id)
+```
+
+Residual plots:
+
+```{r}
+models <- dlply(simulated_regressions, ".id", lm, formula = y ~ x)
+residual_data <- ldply(models, function(x){
+  data.frame(residuals = residuals(x),
+             fitted = fitted(x))
+})
+qplot(x = fitted, y = residuals, data = residual_data) + facet_wrap(~ .id)
 ```
 
