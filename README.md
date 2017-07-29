@@ -8,7 +8,7 @@ Scripting for data analysis with R is a PhD course set to be given in 2017. This
 
 ## Course plan
 
-###1. A crash course in R
+### 1. A crash course in R
 
 Before the seminar I'll send out instructions on how to setup R and RStudio so everyone can work along on their laptop.
 
@@ -24,7 +24,7 @@ A first graph with ggplot2
 Homework for next time: The Unicorn Dataset, exercises in reading data, descriptive statistics, linear models and a few statistical graphs.
 
 
-###2. Programming for data analysis
+### 2. Programming for data analysis
 
 Programming languages one may encounter in science  
 Common concepts and code examples  
@@ -37,7 +37,7 @@ Control flow
 Homework for next time: The Unicorn Expression Dataset, exercises in data wrangling and more interesting graphs.
 
 
-###3. Working with moderately large data
+### 3. Working with moderately large data
 
 Exercise followup  
 More about functions  

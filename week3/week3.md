@@ -1,6 +1,6 @@
-#Week 3
+# Week 3
 
-##Reading
+## Reading
 
 * The Split-Apply-Combine Strategy for data analysis, by guru Hadley Wickham -- a paper that introduces the ideas behind plyr -- <http://vita.had.co.nz/papers/plyr.pdf>
 
@@ -11,7 +11,7 @@
 * Program better for fun and profit -- <https://inattentionalcoffee.wordpress.com/2017/01/13/program-better-for-fun-and-for-profit/>
 
 
-##Exercises
+## Exercises
 
 * Simulate 1000 values from a normal distribution with mean 2 and standard deviation 1. How many percent of the samples were less than 0 or greater than 4? Is this what you would expect from theory?
 
@@ -31,7 +31,7 @@
 
 
 
-##Homework
+## Homework
 
 The third homework is much more open-ended than the previous ones. The task is to perform design analysis by simulation of a study (actual or hypothetical) that is of interest to you. You will simulate data, implement the analysis in R, apply it to many simulated datasets, and evaluate the results. The report should include conclusions and informative statistical graphics.
 

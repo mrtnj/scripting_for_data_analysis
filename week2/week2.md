@@ -1,7 +1,7 @@
-#Week 2
+# Week 2
 
 
-##Reading
+## Reading
 
 * Now that you have started to write code may be a good time to look at coding style. See style guide from Hadley Wickham's Advanced R <http://adv-r.had.co.nz/Style.html> and from Google <https://google.github.io/styleguide/Rguide.xml>. Especially the latter is pretty long, and you don't need to care about all of this. But have a look through and think about how you make your code understandable for your coworkers and future selves.
 
@@ -12,7 +12,7 @@
 * Cookbook for R -- Converting data between wide and long format. <http://www.cookbook-r.com/Manipulating_data/Converting_data_between_wide_and_long_format/>
 
 
-##Exercises
+## Exercises
 
 * Here is a list of useful R functions. You have encountered many of them, but probably not all. If you don't recognize a function, use the documentation to find out what it does. Invent your own usage example.
     * `summary`
@@ -44,7 +44,7 @@
 
 
 
-##Homework
+## Homework
 
 The second homework combines the unicorn dataset with some additional (just as fictional) molecular data.
 
